@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 Random Image Display
+
+  - var image_names = ['dog1.jpeg', 'dog 2.jpeg', 'dog 3.jpeg', 'dog 4.jpeg', 'dog 5.jpeg'];
+
+  .container
+    .row
+      - for (var i = 0; i < 3; i++)
+        - var randomIndex = Math.floor(Math.random() * image_names.length);
+        .col-md-4
+          img(
+            src=`/images/${image_names[randomIndex]}`,
+            alt=`Image ${randomIndex}`,
+            height="300",
+            width="300",
+            onclick=`buy(${randomIndex})`
+          )
+
+  script.
+    function buy(index) {
+      alert('You purchased item ' + index);
+    }
