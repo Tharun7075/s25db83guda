@@ -10,6 +10,36 @@ var cakesRouter = require('./routes/cakes');
 
 var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
+var cakes = require("./models/cakes");
+
+require('dotenv').config();
+const connectionString = process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString);
+
+// We can seed the collection if needed on server start
+async function recreateDB(){
+// Delete everything
+await cakes.deleteMany();
+let instance1 = new cakes({name:"ChocolateCake", flavors:'Vanilla',Price:15.4});
+instance1.save().then(doc=>{
+console.log("First object saved")}).catch(err=>{
+console.error(err)});
+
+
+let instance2 = new cakes({name: "RedVelvetCake", flavors: "Cream Cheese", price: 20.99});
+instance2.save().then(doc=>{
+console.log("Second object saved")}).catch(err=>{
+console.error(err)});
+
+let instance3 = new cakes({name: "CarrotCake", flavors: "Walnut", price: 18.50});
+instance3.save().then(doc=>{
+console.log("Third object saved")}).catch(err=>{
+console.error(err)});
+}
+
+let reseed = true;
+if (reseed) {recreateDB();}
 
 
 var app = express();
@@ -47,5 +77,15 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")});
+
 
 module.exports = app;
