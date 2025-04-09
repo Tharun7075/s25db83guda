@@ -21,13 +21,13 @@ mongoose.connect(connectionString);
 async function recreateDB(){
 // Delete everything
 await cakes.deleteMany();
+
 let instance1 = new cakes({name:"ChocolateCake", flavors:'Vanilla',Price:15.4});
 instance1.save().then(doc=>{
 console.log("First object saved")}).catch(err=>{
 console.error(err)});
 
-
-let instance2 = new cakes({name: "RedVelvetCake", flavors: "Cream Cheese", price: 20.99});
+let instance2 = new cakes({name: "RedVelvetCake", flavors: "CreamCheese", price: 20.99});
 instance2.save().then(doc=>{
 console.log("Second object saved")}).catch(err=>{
 console.error(err)});
@@ -36,6 +36,7 @@ let instance3 = new cakes({name: "CarrotCake", flavors: "Walnut", price: 18.50})
 instance3.save().then(doc=>{
 console.log("Third object saved")}).catch(err=>{
 console.error(err)});
+
 }
 
 let reseed = true;
