@@ -11,6 +11,8 @@ const cakes_controllers= require('../controllers/cakes');
 var router = express.Router();
 /* GET cakes */
 router.get('/', cakes_controllers.cakes_view_all_Page );
+// GET request for one costume.
+router.get('/cakes/:id', cakes_controllers.cakes_detail);
 module.exports = router;
 
 module.exports = router;

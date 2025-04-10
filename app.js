@@ -12,7 +12,7 @@ var gridRouter = require('./routes/grid');
 var pickRouter = require('./routes/pick');
 var cakes = require("./models/cakes");
 var resourceRouter = require('./routes/resource');
-var app= express();
+
 
 require('dotenv').config();
 const connectionString = process.env.MONGO_CON
