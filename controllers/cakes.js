@@ -98,8 +98,7 @@ failed`);
  }
 };
 
-if(req.body.checkboxsale) toUpdate.sale = true;
-else toUpdate.same = false;
+
 
 // Handle Costume update form on PUT.
 exports.costume_update_put = async function(req, res) {
@@ -111,6 +110,8 @@ ${JSON.stringify(req.body)}`)
  if(req.body.name)toUpdate.name = req.body.name;
  if(req.body.flavors) toUpdate.flavors = req.body.flavors;
  if(req.body.price) toUpdate.size = req.body.price;
+ if(req.body.checkboxsale) toUpdate.sale = true;
+else toUpdate.same = false;
  let result = await toUpdate.save();
  console.log("Sucess " + result)
  res.send(result)
