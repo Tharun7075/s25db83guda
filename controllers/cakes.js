@@ -108,7 +108,7 @@ ${JSON.stringify(req.body)}`)
  try {
  let toUpdate = await cakes.findById( req.params.id)
  // Do updates of properties
- if(req.body.name)toUpdate.costume_type = req.body.name;
+ if(req.body.name)toUpdate.name = req.body.name;
  if(req.body.flavors) toUpdate.flavors = req.body.flavors;
  if(req.body.price) toUpdate.size = req.body.price;
  let result = await toUpdate.save();
