@@ -2,22 +2,18 @@ extends layout
 
 block content
   h1= title
+  - let items = results;
   p Below are some cake search results:
 
   //- Step 1: Define sample data using unbuffered server-side code
-  -
-    let results = [
-      { name: "Chocolate Cake", flavors: "Chocolate, Vanilla", price: 15.99 },
-      { name: "Red Velvet Cake", flavors: "Red Velvet, Cream Cheese", price: 20.99 },
-      { name: "Carrot Cake", flavors: "Carrot, Walnut", price: 18.50 }
-    ];
+  
 
   //- Step 2 & 3: Bootstrap grid structure
   .container-fluid
     .row
-      each cake in results
+      each cake in items
         .col-sm-4.border.p-2
-          h3 #{cake.name}
+          h3 Name:#{cake.name}
           p Flavors: #{cake.flavors}
           p Price: $#{cake.price}
 
