@@ -13,6 +13,7 @@ var router = express.Router();
 router.get('/', cakes_controllers.cakes_view_all_Page );
 // GET request for one costume.
 router.get('/cakes/:id', cakes_controllers.cakes_detail);
+router.get('/cakes/:id', cakes_controllers.cakes_update_put);
 module.exports = router;
 
 module.exports = router;

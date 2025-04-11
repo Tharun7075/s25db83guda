@@ -101,7 +101,7 @@ failed`);
 
 
 // Handle Costume update form on PUT.
-exports.costume_update_put = async function(req, res) {
+exports.cakes_update_put = async function(req, res) {
  console.log(`update on id ${req.params.id} with body
 ${JSON.stringify(req.body)}`)
  try {
