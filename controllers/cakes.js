@@ -82,12 +82,11 @@ exports.costume_update_put = async function(req, res) {
  console.log(`update on id ${req.params.id} with body
 ${JSON.stringify(req.body)}`)
  try {
- let toUpdate = await Costume.findById( req.params.id)
+ let toUpdate = await cakes.findById( req.params.id)
  // Do updates of properties
- if(req.body.costume_type)
- toUpdate.costume_type = req.body.costume_type;
- if(req.body.cost) toUpdate.cost = req.body.cost;
- if(req.body.size) toUpdate.size = req.body.size;
+ if(req.body.name)toUpdate.name = req.body.name;
+ if(req.body.flavors) toUpdate.flavors = req.body.flavors;
+ if(req.body.size) toUpdate.price = req.body.price;
  let result = await toUpdate.save();
  console.log("Sucess " + result)
  res.send(result)
