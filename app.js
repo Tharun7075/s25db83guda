@@ -82,8 +82,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 //added
-const express = require('express');
-const app = express();
+
 const cakeRoutes = require('./routes/cakes'); // path to your routes file
 
 app.use(express.json());
