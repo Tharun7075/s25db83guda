@@ -81,17 +81,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-//added
 
-const cakeRoutes = require('./routes/cakes'); // path to your routes file
-
-app.use(express.json());
-app.use('/cakes', cakeRoutes); // make sure this matches the collection route
-
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
-//upto here
 
 //Get the default connection
 var db = mongoose.connection;
