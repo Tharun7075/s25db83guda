@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+
+.cakesAttr {
+  background-color: rgb(235, 167, 30);
+  width: 120px;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.cakesAttr:hover {
+  background-color: mediumaquamarine;
+  cursor: pointer;
+}

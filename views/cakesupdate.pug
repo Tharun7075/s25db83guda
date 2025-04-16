@@ -1,0 +1,39 @@
+extends layout
+block content
+  h1= title
+  - let cakesid = toShow._id
+  - let name = toShow.names
+  - let flavors = toShow.flavors
+  - let price = toShow.price
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{cakesid}
+  - let actionid = "/resource/cakes/" + cakesid
+  form(id='cakesForm', action= actionid, method="PUT")
+    div.form-group
+      label.cakesAttr(for='name') cakes name
+      input#name(type='text', name='name', value= name )
+    div.form-group
+      label.cakesAttr(for='flavors') flavors 
+      input#size(type='text', name='flavors', value= flavors )
+    div.form-group
+      label.cakesAttr(for='price') cakes price
+      input#cost(type='number', name='price', value= price )
+    input(type="submit")
+  script.
+    document.forms['cakesForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'PUT',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Update succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Update failed " + error )
+      });
+    });
