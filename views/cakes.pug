@@ -2,21 +2,24 @@ extends layout
 
 block content
   h1= title
-  - let items = results;
-  p Below are some cake search results:
+  - let items = results
+  p Below are some cakes search results:
 
-  //- Step 1: Define sample data using unbuffered server-side code
-  
-
-  //- Step 2 & 3: Bootstrap grid structure
   .container-fluid
     .row
-      each cake in items
-        .col-sm-4.border.p-2
-          h3 Name:#{cake.name}
-          p Flavors: #{cake.flavors}
-          p Price: $#{cake.price}
+      each quarry in items
+        .col-sm-3.border.p-2
+          h3 name: #{cakes.name}
+          p flavors: #{cakes.flavors}
+          p price: #{cakes.price}
+          button.btn.btn-primary.mt-2(
+            onclick=`dispatch('/cakes/update?id=${cakes._id}')`
+          ) Update
 
-  //- Step 8: Add a hyperlink back to the home page
+  script.
+    function dispatch(path) {
+      window.location.href = path;
+    }
+
   p
     a(href="/") Back to Home
